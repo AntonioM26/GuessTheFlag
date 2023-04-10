@@ -15,7 +15,6 @@ struct ContentView: View {
     @State private var correctAnswer = Int.random(in: 0...2)
     @State private var numberOfQuestions = 0
     @State private var isGameOver = false
-    @State private var gameOverTitle = "Game finished!"
     
     var body: some View {
         ZStack{
@@ -70,7 +69,7 @@ struct ContentView: View {
         } message: {
             Text("Your score is: \(scoreValue)")
         }
-        .alert(gameOverTitle, isPresented: $isGameOver){
+        .alert("Game finished!", isPresented: $isGameOver){
             Button("Start over", action: resetGame)
         } message: {
             Text("Final score: \(scoreValue)")
