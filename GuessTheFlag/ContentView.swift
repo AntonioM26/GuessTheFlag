@@ -16,6 +16,16 @@ struct ContentView: View {
     @State private var numberOfQuestions = 0
     @State private var isGameOver = false
     
+    struct ImageStyle: ViewModifier {
+        
+        func body(content: Content) -> some View {
+           
+            content
+                .clipShape(Capsule())
+                .shadow(radius: 8)
+        }
+    }
+    
     var body: some View {
         ZStack{
             RadialGradient(stops: [
@@ -44,8 +54,7 @@ struct ContentView: View {
                         } label: {
                             Image(countries[number])
                                 .renderingMode(.original)
-                                .clipShape(Capsule())
-                                .shadow(radius: 8)
+                                .modifier(ImageStyle())
                         }
                     }
                 }
